@@ -6,8 +6,11 @@ import os
 from pyspark import SparkContext, SparkConf
 
 logFile = "test.iml"
-print "spark 运行模式:", sys.argv[1]
-sc = SparkContext(sys.argv[1], 'simple demo')
+if len(sys.argv) > 1:
+    print "spark 运行模式:", sys.argv[1]
+    sc = SparkContext(sys.argv[1], 'simple demo')
+else:
+    sc = SparkContext(SparkConf.setAppName("simple demo"))
 sc.setLogLevel('ERROR')
 
 logData = sc.textFile("/user/zhangshoudi/" + logFile).cache()

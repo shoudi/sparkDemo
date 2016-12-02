@@ -10,7 +10,7 @@ if len(sys.argv) > 1:
     print "spark 运行模式:", sys.argv[1]
     sc = SparkContext(sys.argv[1], 'simple demo')
 else:
-    sc = SparkContext(SparkConf.setAppName("simple demo"))
+    sc = SparkContext(appName='simple demo1')
 sc.setLogLevel('ERROR')
 
 logData = sc.textFile("/user/zhangshoudi/" + logFile).cache()

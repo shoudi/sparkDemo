@@ -22,4 +22,4 @@ logData = sc.textFile("" + logFile)
 counts = logData.flatMap(lambda line: line.split(" ")).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b)
 
 #counts.saveAsTextFile("/user/zhangshoudi/20161205")
-counts.saveAsTextFile('/user/zhangshoudi/20161205/02', 'LZ4CompressionCodec')
+counts.saveAsTextFile('/user/zhangshoudi/20161205/02', 'org.apache.hadoop.io.compress.Lz4Codec')
